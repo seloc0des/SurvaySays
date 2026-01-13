@@ -35,10 +35,10 @@ SurvaySays/
 
 ## Hardware Requirements
 
-- OpenWrt compatible router with monitor mode support
+- OpenWrt compatible router with monitor mode support 
 - Samsung WiFi phone (or any Android device with GPS)
-- Ryobi battery with DC output (12V)
-- USB-C Ethernet adapter (recommended)
+- Ryobi battery with DC output (12V) (This is what I am using, you could definitely figure out your own power situation.)
+- USB-C Ethernet adapter (recommended) (I am currently using the usb to ethernet adapter from my Nintendo Switch and a usb to a usb-c adapter to the Samsung device I am using)
 - 3D printed case (optional, STL files not included)
 
 ## Software Requirements

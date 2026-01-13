@@ -1,0 +1,21 @@
+#!/bin/sh /etc/rc.common
+START=99
+
+start() {
+    wl down && wl monitor 1 && ifconfig mon0 up
+    tcpdump -i mon0 -n -l -w - -s 128 not port 9999 2>/dev/null | \
+    awk '{
+      ts=systime();
+      mac=$0; match(mac, /([0-9a-f]{2}:){5}[0-9a-f]{2}/); mac=substr(mac, RSTART, RLENGTH);
+      rssi=$0; match(rssi, /(-?[0-9]+)dB/); rssi=substr(rssi, RSTART, RLENGTH);
+      ch=$0; match(ch, /channel[[:space:]]*([0-9]+)/); ch=substr(ch, RSTART+8, RLENGTH-8);
+      if(mac!="") printf "{\"ts\":%.3f,\"mac\":\"%s\",\"rssi\":%s,\"ch\":%s}\n", ts, mac, rssi, ch
+    }' | nc -l 9999 &
+}
+
+stop() {
+    killall tcpdump
+    killall nc
+    wl monitor 0
+    wl up
+}

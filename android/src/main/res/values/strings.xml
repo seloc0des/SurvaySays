@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WiFi Device Scanner</string>
+    <string name="map_loading">Loading map...</string>
+    <string name="scanner_active">RF Scanner Active</string>
+    <string name="export_kml">Export KML</string>
+    <string name="clear_data">Clear</string>
+</resources>
